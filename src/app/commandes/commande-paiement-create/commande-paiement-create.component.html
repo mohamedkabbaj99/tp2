@@ -1,0 +1,108 @@
+<div class="card-header text-center"><h1>Pour faire une paiement de commande</h1></div>
+
+<div class="card">
+  <div class="card-header"></div>
+  <div class="card-body">
+
+    <div class="form-group">
+      <div class="card-header d-flex justify-content-center p3 mb-2 bg-dark text-white">Ajouter Ref de commande</div>
+      <div class="row text-center">
+        <div class="col-md-6"> <label>Reference</label>
+
+          <input type="text" class="form-control text-center" [(ngModel)]="commande.reference">
+        </div>
+        <div class="col-md-6"><label>Description</label>
+
+          <input type="text" class="form-control text-center" [(ngModel)]="commande.description">
+        </div>
+        <div class="col-md-12"><label>Budget d'Annee</label>
+
+          <select type="number" class="form-control text-center" [(ngModel)]="budget.annee">
+            <option value ="2010">2010</option>
+            <option value ="2011">2011</option>
+            <option value ="2012">2012</option>
+            <option value ="2013">2013</option>
+            <option value ="2014">2014</option>
+            <option value ="2015">2015</option>
+            <option value ="2016">2016</option>
+            <option value ="2017">2017</option>
+            <option value ="2018">2018</option>
+            <option value ="2019">2019</option>
+            <option value ="2020">2020</option>
+            <option value ="2021">2021</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-header bg-white "></div>
+
+
+      <div class="col-md-12">
+        <div class="card-header">
+          <div class="card-header d-flex justify-content-center p3 mb-2 bg-dark text-white">Ajouter des paiements</div>
+
+
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6"><label>Ref</label>
+                <input type="text" class="form-control" [(ngModel)]="paiement.reference">
+              </div>
+              <div class="col-md-6"><label>Montant</label>
+                <input type="number" class="form-control" [(ngModel)]="paiement.montant">
+              </div>
+              <div class="col-md-6"><label>Date de paiement</label>
+                <input type="number" class="form-control" [(ngModel)]="paiement.datePaiement">
+              </div>
+              <div class="col-md-6"><label>Type de paiement</label>
+                <input type="text" class="form-control" [(ngModel)]="typePaiement.ref">
+              </div>
+
+              <div class="col-md-12 text-center card-header">
+                <button type="number" class="btn btn-danger btn-block " (click)="addPaiement()">Save paiement</button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="card">
+
+            <div class="card-header bg-info text-center"><h4>List des paiements</h4></div>
+
+            <div class="card-body">
+
+              <table class="table table-hover table-striped">
+                <thead>
+                <th>Ref</th>
+                <th>Montant</th>
+                <th>Date de paiement</th>
+                <th>Type de paiement</th>
+                </thead>
+                <tbody>
+                <tr *ngFor="let c of paiements">
+                  <td>{{c.reference}}</td>
+                  <td>{{c.montant}}</td>
+                  <td>{{c.datePaiement}}</td>
+                  <td *ngFor="let k of typePaiements">{{k.ref}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="card-footer bg-info">
+              <h5>TotalPaye : {{commande.totalPaye}}</h5>
+            </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+    <div class="card-footer text-center ">
+      <button class="btn btn-primary btn-lg" [disabled]="" (click)="save()"><h4>Save</h4></button>
+    </div>
+  </div>
+

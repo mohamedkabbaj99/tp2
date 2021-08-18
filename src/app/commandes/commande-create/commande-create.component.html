@@ -1,0 +1,109 @@
+<div class="card-header text-center"><h1>Pour faire une commande de produit</h1></div>
+
+<div class="card">
+  <div class="card-header"></div>
+  <div class="card-body">
+
+    <div class="form-group">
+      <div class="card-header d-flex justify-content-center p3 mb-2 bg-dark text-white">Ajouter Ref de commande</div>
+      <div class="row text-center">
+        <div class="col-md-6"> <label>Reference</label>
+
+          <input type="text" class="form-control text-center" [(ngModel)]="commande.reference">
+        </div>
+        <div class="col-md-6"><label>Description</label>
+
+          <input type="text" class="form-control text-center" [(ngModel)]="commande.description">
+        </div>
+        <div class="col-md-12"><label>Budget d'Annee</label>
+
+          <select type="number" class="form-control text-center" [(ngModel)]="budget.annee">
+            <option value ="2010">2010</option>
+            <option value ="2011">2011</option>
+            <option value ="2012">2012</option>
+            <option value ="2013">2013</option>
+            <option value ="2014">2014</option>
+            <option value ="2015">2015</option>
+            <option value ="2016">2016</option>
+            <option value ="2017">2017</option>
+            <option value ="2018">2018</option>
+            <option value ="2019">2019</option>
+            <option value ="2020">2020</option>
+            <option value ="2021">2021</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-header bg-white "></div>
+
+
+    <div class="col-md-12">
+      <div class="card-header">
+        <div class="card-header d-flex justify-content-center p3 mb-2 bg-dark text-white">Ajouter des produits</div>
+
+
+
+        <div class="card-body">
+          <div class="row">
+
+            <div class="col-md-6"><label>Name Produit</label>
+              <input type="text" class="form-control" [(ngModel)]="produit.ref">
+            </div>
+            <div class="col-md-6"><label>Ref</label>
+              <input type="text" class="form-control" [(ngModel)]="commandeItem.ref">
+            </div>
+            <div class="col-md-6"><label>Prix</label>
+              <input type="number" class="form-control" [(ngModel)]="commandeItem.prix">
+            </div>
+            <div class="col-md-6"><label>Qte</label>
+              <input type="number" class="form-control" [(ngModel)]="commandeItem.qteCommandee">
+            </div>
+            <div class="col-md-12"><label>Categorie de produit</label>
+              <input type="text" class="form-control" [(ngModel)]="produitCategorie.reference">
+            </div>
+            <div class="col-md-12 text-center card-header">
+              <button type="number" class="btn btn-danger btn-block " (click)="addCommandeItem()">Save produit</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="card-header bg-info text-center"><h4>List des produits</h4></div>
+
+          <div class="card-body">
+
+            <table class="table table-hover table-striped">
+              <thead>
+              <th>Ref</th>
+              <th>Prix</th>
+              <th>Qte</th>
+              <th>Name produit</th>
+              <th>Categorie produit</th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let c of commandeItems">
+                <td>{{c.ref}}</td>
+                <td>{{c.prix}}</td>
+                <td>{{c.qteCommandee}}</td>
+                <td *ngFor="let a of produits">{{a.ref}}</td>
+                <td *ngFor="let m of produitCategories">{{m.reference}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card-footer bg-info">
+            <h5>Total : {{commande.total}}</h5>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-center ">
+    <button class="btn btn-primary btn-lg" [disabled]="" (click)="save()"><h4>Save</h4></button>
+  </div>
+</div>
